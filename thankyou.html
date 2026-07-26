@@ -13,9 +13,12 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '2419677635181694');
     fbq('track', 'PageView');
-    if (!sessionStorage.getItem('metaLeadSent')) {
+    const sampleFormSubmitted = sessionStorage.getItem('sampleFormSubmitted') === '1';
+    if (sampleFormSubmitted && !sessionStorage.getItem('metaLeadSent')) {
+      fbq('trackCustom', 'sample_form_submit');
       fbq('track', 'Lead');
       sessionStorage.setItem('metaLeadSent', '1');
+      sessionStorage.removeItem('sampleFormSubmitted');
     }
   </script>
   <style>

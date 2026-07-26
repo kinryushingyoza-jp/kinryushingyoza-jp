@@ -17,7 +17,10 @@
     let formLoads = 0;
     function handleFormLoad() {
       formLoads += 1;
-      if (formLoads > 1) window.location.replace('thankyou.html');
+      if (formLoads > 1) {
+        sessionStorage.setItem('sampleFormSubmitted', '1');
+        window.location.replace('thankyou.html');
+      }
     }
   </script>
   <style>
